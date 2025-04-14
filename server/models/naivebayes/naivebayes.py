@@ -6,11 +6,11 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report, accuracy_score
 
 # normalize datasets
-df1 = pd.read_csv("messages.csv", encoding='latin-1')[['v1', 'v2']]
+df1 = pd.read_csv("../datasets/messages.csv", encoding='latin-1')[['v1', 'v2']]
 df1.columns = ['target', 'message']
 df1['target'] = df1['target'].map({'ham': 0, 'spam': 1})
 
-df2 = pd.read_csv("emails.csv")[['text', 'spam']]
+df2 = pd.read_csv("../datasets/emails.csv")[['text', 'spam']]
 df2.columns = ['message', 'target']
 
 # combine datasets
