@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+
+enum Models {
+  NAIVEBAYES = 'naivebayes',
+}
+
+const availableModels: Record<string, Models> = {
+  'Naive Bayes': Models.NAIVEBAYES,
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedModel, setSelectedModel] = useState<Models>(Models.NAIVEBAYES);
+  const [input, setInput] = useState('');
+
+  const sendInput = () => {};
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Spam Classifier</h1>
+        <textarea onChange={(e) => setInput(e.target.value)} value={input} />
+        <div className="select-model-container">
+          <h3>Select model</h3>
+          {Object.keys(availableModels).map((modelName) => (
+            <>
+              <input
+                type="checkbox"
+                name={modelName}
+                checked={availableModels[modelName] === selectedModel}
+                onClick={() => setSelectedModel(availableModels[modelName])}
+              />
+              <label htmlFor={modelName}>{modelName}</label>
+            </>
+          ))}
+        </div>
+        <div>
+          <button onClick={sendInput}>Submit</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
