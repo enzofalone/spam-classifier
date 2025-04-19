@@ -3,10 +3,12 @@ import './App.css';
 
 enum Models {
   NAIVEBAYES = 'naivebayes',
+  SVM = 'svm'
 }
 
 const availableModels: Record<string, Models> = {
   'Naive Bayes': Models.NAIVEBAYES,
+  'Support Vector Machine': Models.SVM
 };
 
 function App() {
