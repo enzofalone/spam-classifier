@@ -3,12 +3,12 @@ import './App.css';
 
 enum Models {
   NAIVEBAYES = 'naivebayes',
-  SVM = 'svm'
+  SVM = 'svm',
 }
 
 const availableModels: Record<string, Models> = {
   'Naive Bayes': Models.NAIVEBAYES,
-  'Support Vector Machine': Models.SVM
+  'Support Vector Machine': Models.SVM,
 };
 
 function App() {
@@ -25,15 +25,16 @@ function App() {
         <div className="select-model-container">
           <h3>Select model</h3>
           {Object.keys(availableModels).map((modelName) => (
-            <>
+            <div>
               <input
                 type="checkbox"
+                placeholder="Enter spam message..."
                 name={modelName}
                 checked={availableModels[modelName] === selectedModel}
                 onClick={() => setSelectedModel(availableModels[modelName])}
               />
               <label htmlFor={modelName}>{modelName}</label>
-            </>
+            </div>
           ))}
         </div>
         <div>

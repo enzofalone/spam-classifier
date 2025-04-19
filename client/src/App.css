@@ -14,8 +14,12 @@ textarea {
   margin: 2rem 0;
   width: 100%;
   min-height: 200px;
+  min-width: 100%;
 }
 
 .select-model-container {
+  display: flex;
+  flex-direction: column;
   text-align: left;
+  margin-bottom: 1rem;
 }
