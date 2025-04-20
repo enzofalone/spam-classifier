@@ -3,7 +3,8 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # normalize datasets
 df1 = pd.read_csv("../datasets/messages.csv", encoding='latin-1')[['v1', 'v2']]
@@ -33,7 +34,16 @@ model.fit(X_train_vec, y_train)
 
 y_pred = model.predict(X_test_vec)
 print("Accuracy:", accuracy_score(y_test, y_pred))
+
+print("Classification report")
 print(classification_report(y_test, y_pred))
+
+# display confusion matrix
+cm = confusion_matrix(y_test,y_pred)
+disp = ConfusionMatrixDisplay(cm)
+
+disp.plot()
+plt.show()
 
 # dump model and vectorized to reuse in Flask app
 joblib.dump(model, 'spam_classifier_model.pkl')
