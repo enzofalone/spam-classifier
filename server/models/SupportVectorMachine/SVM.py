@@ -53,5 +53,5 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
 # dump model for Flask
-joblib.dump(svm_model, 'svm_spam_classifier.pkl')
-joblib.dump(vectorizer, 'svm_vectorizer.pkl')
+joblib.dump(svm_model, 'spam_classifier_model.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')

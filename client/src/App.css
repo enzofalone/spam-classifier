@@ -23,3 +23,11 @@ textarea {
   text-align: left;
   margin-bottom: 1rem;
 }
+
+button {
+  margin-bottom: 1rem;
+}
+
+ul {
+  text-align: left;
+}
